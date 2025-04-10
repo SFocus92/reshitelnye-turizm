@@ -1,45 +1,30 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Админка Решительные</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="data:," />
-    <script src="https://unpkg.com/decap-cms@3.6.2/dist/decap-cms.js" defer></script>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        background: #f9f9f9;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="nc-root"></div>
-
-    <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        console.log("DOM загружен");
-
-        if (!document.getElementById("nc-root")) {
-          const root = document.createElement("div");
-          root.id = "nc-root";
-          document.body.appendChild(root);
-        }
-
-        if (typeof CMS === "undefined") {
-          console.error("CMS не загружен!");
-          return;
-        }
-
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админка туров</title>
+  <script src="/js/decap-cms.js"></script>
+</head>
+<body>
+  <div id="nc-root" style="min-height: 100vh;"></div> <!-- Контейнер с высотой -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM загружен');
+      setTimeout(() => {
         try {
-          CMS.init(); // Автоматически загрузит /admin/config.yml
-          console.log("✅ CMS успешно инициализирован");
+          if (typeof CMS === 'undefined') {
+            console.error('Ошибка: CMS не загружен! Проверьте /js/decap-cms.js');
+            return;
+          }
+          console.log('CMS загружен, инициализация...');
+          CMS.init(); // Используем config.yml
+          console.log('✅ CMS успешно инициализирован');
         } catch (error) {
-          console.error("❌ Ошибка CMS:", error);
+          console.error('Ошибка при инициализации CMS:', error);
         }
-      });
-    </script>
-  </body>
+      }, 500); // Задержка для полной загрузки
+    });
+  </script>
+</body>
 </html>
