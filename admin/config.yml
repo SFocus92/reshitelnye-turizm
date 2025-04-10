@@ -1,29 +1,17 @@
 backend:
-  name: github
-  repo: SFocus92/reshitelnye-turizm
+  name: git-gateway
   branch: main
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
 collections:
   - name: "tours"
     label: "Туры"
     folder: "content/tours"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "Название", name: "title", widget: "string" }
-      - { label: "Дата", name: "date", widget: "datetime" }
-      - { label: "Описание", name: "body", widget: "markdown" }
-      - { label: "Изображение", name: "image", widget: "image" }
-
-  - name: "reviews"
-    label: "Отзывы"
-    folder: "content/reviews"
-    create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Имя", name: "name", widget: "string" }
-      - { label: "Город", name: "city", widget: "string" }
-      - { label: "Отзыв", name: "review", widget: "text" }
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime" }
+      - { label: "Описание", name: "body", widget: "markdown" }
