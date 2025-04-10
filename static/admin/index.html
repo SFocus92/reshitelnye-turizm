@@ -8,29 +8,5 @@
 </head>
 <body>
   <div id="nc-root" style="min-height: 100vh;"></div>
-  <script>
-    let isInitialized = false; // Флаг для предотвращения повторной инициализации
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log('DOM загружен');
-      if (isInitialized) {
-        console.log('CMS уже инициализирован, пропускаем...');
-        return;
-      }
-      if (typeof CMS === 'undefined') {
-        console.error('Ошибка: CMS не загружен!');
-        return;
-      }
-      console.log('CMS загружен, инициализация...');
-      try {
-        CMS.init({
-          root: document.getElementById('nc-root') // Явный контейнер
-        });
-        console.log('✅ CMS успешно инициализирован');
-        isInitialized = true;
-      } catch (error) {
-        console.error('Ошибка при инициализации CMS:', error);
-      }
-    }, { once: true }); // Слушатель срабатывает только один раз
-  </script>
 </body>
 </html>
