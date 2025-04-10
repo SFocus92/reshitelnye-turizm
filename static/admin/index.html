@@ -7,23 +7,25 @@
   <script src="/js/decap-cms.js"></script>
 </head>
 <body>
-  <div id="nc-root" style="min-height: 100vh;"></div> <!-- Контейнер с высотой -->
+  <div id="nc-root" style="min-height: 100vh;"></div>
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       console.log('DOM загружен');
-      setTimeout(() => {
-        try {
-          if (typeof CMS === 'undefined') {
-            console.error('Ошибка: CMS не загружен! Проверьте /js/decap-cms.js');
-            return;
-          }
+      // Ждем полной загрузки CMS
+      const waitForCMS = setInterval(() => {
+        if (typeof CMS !== 'undefined') {
+          clearInterval(waitForCMS);
           console.log('CMS загружен, инициализация...');
-          CMS.init(); // Используем config.yml
-          console.log('✅ CMS успешно инициализирован');
-        } catch (error) {
-          console.error('Ошибка при инициализации CMS:', error);
+          try {
+            CMS.init(); // Используем config.yml
+            console.log('✅ CMS успешно инициализирован');
+          } catch (error) {
+            console.error('Ошибка при инициализации CMS:', error);
+          }
+        } else {
+          console.log('Ожидание CMS...');
         }
-      }, 500); // Задержка для полной загрузки
+      }, 100); // Проверка каждые 100мс
     });
   </script>
 </body>
