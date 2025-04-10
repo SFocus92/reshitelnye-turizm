@@ -1,22 +1,28 @@
 backend:
   name: git-gateway
   branch: main
-  commit_messages:
-    create: "Создан тур: {{slug}}"
-    update: "Обновлён тур: {{slug}}"
 
-media_folder: "static/img"    # Путь для сохранения изображений
-public_folder: "/img"         # Публичный путь к изображениям
+media_folder: "images/uploads"      # куда сохраняются изображения
+public_folder: "/images/uploads"    # как отображаются изображения на сайте
 
 collections:
   - name: "tours"
     label: "Туры"
-    folder: "content/tours"   # Путь к файлам туров
+    folder: "content/tours"
     create: true
-    slug: "{{fields.title}}"
+    slug: "{{slug}}"
     fields:
-      - { name: "title", label: "Название", widget: "string" }
-      - { name: "description", label: "Описание", widget: "markdown" }
-      - { name: "price", label: "Цена", widget: "string" }
-      - { name: "date", label: "Дата", widget: "datetime" }
-      - { name: "image", label: "Изображение", widget: "image" }
+      - { label: "Название тура", name: "title", widget: "string" }
+      - { label: "Описание", name: "description", widget: "text" }
+      - { label: "Дата начала", name: "start_date", widget: "datetime" }
+      - { label: "Фото", name: "image", widget: "image" }
+
+  - name: "reviews"
+    label: "Отзывы"
+    folder: "content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Имя", name: "author", widget: "string" }
+      - { label: "Текст отзыва", name: "body", widget: "text" }
+      - { label: "Дата", name: "date", widget: "datetime" }
