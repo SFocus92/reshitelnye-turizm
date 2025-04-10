@@ -1,24 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" href="/favicon.ico">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админка туров</title>
-  <script src="https://unpkg.com/netlify-cms@2/dist/netlify-cms.js"></script>
+  <!-- Используем точную версию 2.55.2 для избежания конфликтов -->
+  <script src="https://unpkg.com/netlify-cms@2.55.2/dist/netlify-cms.js"></script>
 </head>
 <body>
+  <!-- Контейнер для интерфейса CMS -->
   <div id="nc-root"></div>
   <script>
+    // Ждем полной загрузки DOM
     window.addEventListener('DOMContentLoaded', () => {
-      CMS.init({
-        config: {
-          backend: {
-            name: "git-gateway",
-            branch: "main"
+      // Проверяем, загружен ли CMS
+      if (typeof CMS === 'undefined') {
+        console.error('Ошибка: CMS не загружен! Проверьте, загружается ли netlify-cms.js.');
+        return;
+      }
+      console.log('CMS загружен, инициализация...');
+      try {
+        CMS.init({
+          config: {
+            backend: {
+              name: "git-gateway",
+              branch: "main"
+            }
+            // Если нужны коллекции, добавьте их сюда, например:
+            // collections: [
+            //   {
+            //     name: "tours",
+            //     label: "Туры",
+            //     folder: "content/tours",
+            //     create: true,
+            //     fields: [
+            //       { label: "Заголовок", name: "title", widget: "string" },
+            //       { label: "Описание", name: "body", widget: "markdown" }
+            //     ]
+            //   }
+            // ]
           }
-        }
-      });
+        });
+        console.log('CMS успешно инициализирован');
+      } catch (error) {
+        console.error('Ошибка при инициализации CMS:', error);
+      }
     });
   </script>
 </body>
