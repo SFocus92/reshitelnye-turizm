@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админка туров</title>
-  <!-- Путь к локальному файлу -->
+  <!-- Путь к файлу в publish directory -->
   <script src="/js/netlify-cms.js"></script>
 </head>
 <body>
@@ -20,7 +20,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       console.log('DOM загружен');
       if (typeof CMS === 'undefined') {
-        console.error('Ошибка: CMS не загружен! Проверьте, загрувается ли netlify-cms.js.');
+        console.error('Ошибка: CMS не загружен! Проверьте, загружается ли netlify-cms.js.');
         return;
       }
       console.log('CMS загружен, инициализация...');
