@@ -4,16 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админка туров</title>
-  <!-- Используем точную версию 2.55.2 для избежания конфликтов -->
-  <script src="https://unpkg.com/netlify-cms@2.55.2/dist/netlify-cms.js"></script>
+  <!-- Локальная копия netlify-cms версии 2.10.192 -->
+  <script src="/js/netlify-cms.js"></script>
 </head>
 <body>
-  <!-- Контейнер для интерфейса CMS -->
   <div id="nc-root"></div>
   <script>
+    // Проверяем загрузку скрипта до DOMContentLoaded
+    console.log('Проверка: скрипт netlify-cms.js подключен');
+    if (typeof window.CMS === 'undefined') {
+      console.error('CMS не определен сразу после подключения скрипта');
+    } else {
+      console.log('CMS определен сразу после подключения:', window.CMS);
+    }
+
     // Ждем полной загрузки DOM
     window.addEventListener('DOMContentLoaded', () => {
-      // Проверяем, загружен ли CMS
+      console.log('DOM загружен');
       if (typeof CMS === 'undefined') {
         console.error('Ошибка: CMS не загружен! Проверьте, загружается ли netlify-cms.js.');
         return;
@@ -26,19 +33,6 @@
               name: "git-gateway",
               branch: "main"
             }
-            // Если нужны коллекции, добавьте их сюда, например:
-            // collections: [
-            //   {
-            //     name: "tours",
-            //     label: "Туры",
-            //     folder: "content/tours",
-            //     create: true,
-            //     fields: [
-            //       { label: "Заголовок", name: "title", widget: "string" },
-            //       { label: "Описание", name: "body", widget: "markdown" }
-            //     ]
-            //   }
-            // ]
           }
         });
         console.log('CMS успешно инициализирован');
