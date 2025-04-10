@@ -4,35 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админка туров</title>
-  <script src="/js/decap-cms.js" defer></script> <!-- defer для полной загрузки -->
+  <script src="/js/decap-cms.js" defer></script>
 </head>
 <body>
   <div id="nc-root" style="min-height: 100vh;"></div>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       console.log('DOM загружен');
-      const scriptLoaded = new Promise((resolve) => {
-        const script = document.querySelector('script[src="/js/decap-cms.js"]');
-        if (script.complete || typeof CMS !== 'undefined') {
-          resolve();
-        } else {
-          script.onload = resolve;
-        }
-      });
-
-      scriptLoaded.then(() => {
-        if (typeof CMS === 'undefined') {
-          console.error('Ошибка: CMS не загружен! Проверьте /js/decap-cms.js');
-          return;
-        }
-        console.log('CMS загружен, инициализация...');
-        try {
-          CMS.init(); // Используем config.yml
-          console.log('✅ CMS успешно инициализирован');
-        } catch (error) {
-          console.error('Ошибка при инициализации CMS:', error);
-        }
-      });
+      if (typeof CMS === 'undefined') {
+        console.error('Ошибка: CMS не загружен!');
+        return;
+      }
+      console.log('CMS загружен, инициализация...');
+      try {
+        CMS.init({
+          root: document.getElementById('nc-root') // Явно указываем контейнер
+        });
+        console.log('✅ CMS успешно инициализирован');
+      } catch (error) {
+        console.error('Ошибка при инициализации CMS:', error);
+      }
     });
   </script>
 </body>
