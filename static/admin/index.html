@@ -26,5 +26,24 @@
       }
     });
   </script>
-</body>
+<div id="nc-root" style="min-height: 100vh;"></div>
+<div id="cms-root" style="min-height: 100vh;"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM загружен');
+    if (typeof CMS === 'undefined') {
+      console.error('Ошибка: CMS не загружен!');
+      return;
+    }
+    console.log('CMS загружен, инициализация...');
+    try {
+      CMS.init({
+        root: document.getElementById('cms-root') // Новый контейнер
+      });
+      console.log('✅ CMS успешно инициализирован');
+    } catch (error) {
+      console.error('Ошибка при инициализации CMS:', error);
+    }
+  });
+</script></body>
 </html>
