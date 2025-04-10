@@ -2,16 +2,17 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "static/img"
+public_folder: "/img"
 
 collections:
   - name: "tours"
-    label: "Туры"
+    label: "Tours"
     folder: "content/tours"
     create: true
-    slug: "{{slug}}"
     fields:
-      - { label: "Заголовок", name: "title", widget: "string" }
-      - { label: "Дата", name: "date", widget: "datetime" }
-      - { label: "Описание", name: "body", widget: "markdown" }
+      - { name: "title", label: "Заголовок", widget: "string" }
+      - { name: "description", label: "Описание", widget: "text" }
+      - { name: "price", label: "Цена", widget: "string" }
+      - { name: "image", label: "Изображение", widget: "image" }
+      - { name: "date", label: "Дата", widget: "datetime" }
