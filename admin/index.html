@@ -4,17 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админка туров</title>
-  <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
+  <script src="https://unpkg.com/netlify-cms@^2.55.2/dist/netlify-cms.js"></script>
 </head>
 <body>
+  <div id="nc-root"></div>
   <script>
-    CMS.init({
-      config: {
-        backend: {
-          name: "git-gateway",
-          branch: "main"
+    window.addEventListener('DOMContentLoaded', () => {
+      CMS.init({
+        config: {
+          backend: {
+            name: "git-gateway",
+            branch: "main"
+          }
         }
-      }
+      });
     });
   </script>
 </body>
