@@ -11,25 +11,28 @@
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       console.log('DOM загружен');
-      if (typeof CMS === 'undefined') {
-        console.error('Ошибка: CMS не загружен! Проверьте, загружается ли decap-cms.js.');
-        return;
-      }
-      console.log('CMS загружен, инициализация...');
-      try {
-        CMS.init({
-          config: {
-            backend: {
-              name: "git-gateway",
-              branch: "main"
-            },
-            load_config_file: false // Отключаем поиск config.yml
-          }
-        });
-        console.log('CMS успешно инициализирован');
-      } catch (error) {
-        console.error('Ошибка при инициализации CMS:', error);
-      }
+      // Даем CMS время загрузиться
+      setTimeout(() => {
+        if (typeof CMS === 'undefined') {
+          console.error('Ошибка: CMS не загружен! Проверьте, загружается ли decap-cms.js.');
+          return;
+        }
+        console.log('CMS загружен, инициализация...');
+        try {
+          CMS.init({
+            config: {
+              backend: {
+                name: "git-gateway",
+                branch: "main"
+              },
+              load_config_file: false // Отключаем поиск config.yml
+            }
+          });
+          console.log('CMS успешно инициализирован');
+        } catch (error) {
+          console.error('Ошибка при инициализации CMS:', error);
+        }
+      }, 100); // Задержка 100мс
     });
   </script>
 </body>
