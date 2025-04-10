@@ -4,24 +4,19 @@ backend:
   commit_messages:
     create: "Создан тур: {{slug}}"
     update: "Обновлён тур: {{slug}}"
-    delete: "Удалён тур: {{slug}}"
-    uploadMedia: "Загружено изображение: {{path}}"
-    deleteMedia: "Удалено изображение: {{path}}"
 
-media_folder: "static/img"
-public_folder: "/img"
+media_folder: "static/img"    # Путь для сохранения изображений
+public_folder: "/img"         # Публичный путь к изображениям
 
 collections:
   - name: "tours"
     label: "Туры"
-    label_singular: "Тур"
-    folder: "content/tours"
+    folder: "content/tours"   # Путь к файлам туров
     create: true
-    slug: "{{fields.title}}-{{year}}-{{month}}-{{day}}"
+    slug: "{{fields.title}}"
     fields:
-      - { name: "title", label: "Название тура", widget: "string" }
+      - { name: "title", label: "Название", widget: "string" }
       - { name: "description", label: "Описание", widget: "markdown" }
       - { name: "price", label: "Цена", widget: "string" }
-      - { name: "date", label: "Дата тура", widget: "datetime" }
-      - { name: "image", label: "Главное изображение", widget: "image" }
-      - { name: "gallery", label: "Галерея", widget: "list", field: { name: "image", label: "Фото", widget: "image" } }
+      - { name: "date", label: "Дата", widget: "datetime" }
+      - { name: "image", label: "Изображение", widget: "image" }
