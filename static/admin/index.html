@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
   <title>Админка туров</title>
-  <script src="/js/decap-cms.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,"> <!-- убираем ошибку favicon -->
+  <script src="https://unpkg.com/decap-cms@3.6.2/dist/decap-cms.js"></script>
 </head>
 <body>
   <div id="nc-root"></div>
+
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      console.log('DOM загружен');
-      // Даем CMS время загрузиться
-      setTimeout(() => {
-        if (typeof CMS === 'undefined') {
-          console.error('Ошибка: CMS не загружен! Проверьте, загружается ли decap-cms.js.');
-          return;
-        }
-        console.log('CMS загружен, инициализация...');
-        try {
-          CMS.init({
-            config: {
-              backend: {
-                name: "git-gateway",
-                branch: "main"
-              },
-              load_config_file: false // Отключаем поиск config.yml
-            }
-          });
-          console.log('CMS успешно инициализирован');
-        } catch (error) {
-          console.error('Ошибка при инициализации CMS:', error);
-        }
-      }, 100); // Задержка 100мс
+      if (typeof CMS === 'undefined') {
+        console.error('CMS не загружен!');
+        return;
+      }
+
+      // Простой запуск CMS (ищет /admin/config.yml)
+      CMS.init();
+
+      console.log('CMS успешно инициализирован');
     });
   </script>
 </body>
