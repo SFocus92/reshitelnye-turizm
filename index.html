@@ -2,11 +2,11 @@
 
 <html lang="ru">
 <head>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/684/684908.png" type="image/png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title> <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/684/684908.png" type="image/png">
-Решительные - активный туризм с Алексеем</title>
+<title>Решительные - активный туризм с Алексеем</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
@@ -440,6 +440,26 @@
 </div>
 </div>
 </section>
+<section class="py-20 bg-gray-100" id="calendar">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Ближайшие даты туров</h2>
+    <div class="grid md:grid-cols-3 gap-6 text-center">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-semibold text-green-700 mb-2">Поход в Крым</h3>
+        <p class="text-gray-600">15–18 мая 2025</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-semibold text-green-700 mb-2">Скалолазание</h3>
+        <p class="text-gray-600">3–6 июня 2025</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h3 class="text-xl font-semibold text-green-700 mb-2">Летний лагерь</h3>
+        <p class="text-gray-600">20–25 июля 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!DOCTYPE html>
 
 <html lang="ru">
@@ -561,6 +581,15 @@
     </div>
   </div>
 </section>
+<section class="py-20 bg-white" id="calendar">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Календарь предстоящих туров</h2>
+    <div id="calendarGrid" class="grid grid-cols-7 gap-2 text-center text-gray-700">
+      <!-- Календарь будет сюда вставлен -->
+    </div>
+  </div>
+</section>
+
 <section class="py-16 bg-white" id="map">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold text-gray-800 mb-4">Точка сбора — Севастополь</h2>
@@ -568,7 +597,7 @@
     <iframe src="https://yandex.ru/map-widget/v1/?ll=33.419384%2C44.564893&mode=whatshere&whatshere%5Bpoint%5D=33.419384%2C44.564893&whatshere%5Bzoom%5D=17&z=17" width="100%" height="400" frameborder="0" allowfullscreen="true" style="border-radius: 12px;"></iframe>
   </div>
 </section>
-
+<p id="visitorCount" class="text-xs text-gray-400 mt-2">Загрузка счётчика...</p>
 <footer class="bg-gray-800 text-white py-6 mt-16">
   <div class="container mx-auto px-4 text-center text-sm space-y-2">
     <p>© 2025 Решительные. Все права защищены.</p>
@@ -588,4 +617,55 @@
     }
   });
 </script>
+<script>
+  fetch('https://api.countapi.xyz/hit/reshitelnye/visits')
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('visitorCount').textContent = `Посещений сайта: ${data.value}`;
+    });
+</script>
+<script>
+  const tourDates = {
+    '2025-05-15': { name: 'Поход в Крым', icon: '🥾' },
+    '2025-06-03': { name: 'Скалолазание', icon: '🧗' },
+    '2025-07-20': { name: 'Летний лагерь', icon: '🏕️' }
+  };
+
+  const renderCalendar = () => {
+    const calendar = document.getElementById('calendarGrid');
+    const year = 2025;
+    const month = 4; // Май (0-based, т.е. 4 = май)
+
+    const date = new Date(year, month, 1);
+    const startDay = date.getDay() === 0 ? 7 : date.getDay(); // Понедельник = 1
+    const totalDays = new Date(year, month + 1, 0).getDate();
+
+    // Пустые ячейки перед началом месяца
+    for (let i = 1; i < startDay; i++) {
+      const empty = document.createElement('div');
+      calendar.appendChild(empty);
+    }
+
+    for (let day = 1; day <= totalDays; day++) {
+      const fullDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const div = document.createElement('div');
+      div.className = 'border rounded-lg py-4 px-2 hover:bg-yellow-100 cursor-pointer';
+
+      if (tourDates[fullDate]) {
+        div.classList.add('bg-yellow-200', 'font-bold', 'text-green-800');
+        div.innerHTML = `${tourDates[fullDate].icon}<br>${day}`;
+        div.title = tourDates[fullDate].name;
+        div.onclick = () => alert(`${tourDates[fullDate].name} (${fullDate})`);
+      } else {
+        div.textContent = day;
+      }
+
+      calendar.appendChild(div);
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', renderCalendar);
+</script>
+<script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+
 </body></html>
