@@ -4,13 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админка туров</title>
-  <!-- Локальная копия netlify-cms версии 2.10.192 -->
+  <!-- Путь к локальному файлу -->
   <script src="/js/netlify-cms.js"></script>
 </head>
 <body>
   <div id="nc-root"></div>
   <script>
-    // Проверяем загрузку скрипта до DOMContentLoaded
     console.log('Проверка: скрипт netlify-cms.js подключен');
     if (typeof window.CMS === 'undefined') {
       console.error('CMS не определен сразу после подключения скрипта');
@@ -18,11 +17,10 @@
       console.log('CMS определен сразу после подключения:', window.CMS);
     }
 
-    // Ждем полной загрузки DOM
     window.addEventListener('DOMContentLoaded', () => {
       console.log('DOM загружен');
       if (typeof CMS === 'undefined') {
-        console.error('Ошибка: CMS не загружен! Проверьте, загружается ли netlify-cms.js.');
+        console.error('Ошибка: CMS не загружен! Проверьте, загрувается ли netlify-cms.js.');
         return;
       }
       console.log('CMS загружен, инициализация...');
