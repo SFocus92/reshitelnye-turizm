@@ -26,3 +26,7 @@ collections:
       - { label: "Имя", name: "author", widget: "string" }
       - { label: "Текст отзыва", name: "body", widget: "text" }
       - { label: "Дата", name: "date", widget: "datetime" }
+      backend:
+  name: git-gateway
+  branch: main
+
