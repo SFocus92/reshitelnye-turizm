@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Приглашение</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .button { 
+            display: inline-block; 
+            background: #4CAF50; 
+            color: white; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Добро пожаловать!</h2>
+        <p>Вас пригласили присоединиться к <strong>reshitelnie.netify.app</strong>.</p>
+        <p>Для завершения регистрации нажмите кнопку ниже:</p>
+        <a href="{{ .ConfirmationURL }}" class="button">Принять приглашение</a>
+        <p>Если вы не ожидали это письмо, просто проигнорируйте его.</p>
+    </div>
+</body>
+</html>
