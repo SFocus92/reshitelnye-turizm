@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com https://cdn-icons-png.flaticon.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline'; script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://identity.netlify.com https://api.countapi.xyz https://unpkg.com 'unsafe-inline' 'unsafe-eval'; font-src 'self' https://cdnjs.cloudflare.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com https://cdn-icons-png.flaticon.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com 'unsafe-inline'; script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline' 'unsafe-eval'; font-src 'self' https://cdnjs.cloudflare.com;" />
   <title>Решительные - активный туризм с Алексеем</title>
   <meta name="description" content="Профессиональные туры по Крыму и России: скалолазание, походы, рыбалка и горнолыжные спуски с опытными гидами." />
   <meta name="keywords" content="активный туризм, туры по Крыму, скалолазание, походы, горные лыжи, Россия, Алексей" />
@@ -628,9 +628,6 @@
     </div>
   </section>
 
-  <!-- Счетчик посещений -->
-  <p id="visitorCount" class="text-xs text-gray-400 mt-2 text-center">Загрузка счётчика...</p>
-
   <!-- Футер -->
   <footer class="bg-gray-800 text-white py-6 mt-16">
     <div class="container mx-auto px-4 text-center text-sm space-y-2">
@@ -683,145 +680,4 @@
       currentIndex = galleryImages.findIndex(img => img.src === src);
     }
 
-    function closeModal() {
-      document.getElementById('myModal').style.display = 'none';
-    }
-
-    function changeImage(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = galleryImages.length - 1;
-      if (currentIndex >= galleryImages.length) currentIndex = 0;
-      const { src, title, date, rating } = galleryImages[currentIndex];
-      document.getElementById('modalImage').src = src;
-      document.getElementById('modalCaption').innerHTML = `${title} (${date}) — Оценка: ${rating}`;
-    }
-
-    document.getElementById('myModal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('myModal')) closeModal();
-    });
-
-    // Фильтр туров
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const tripCards = document.querySelectorAll('.trip-card');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const filter = button.getAttribute('data-filter');
-        filterButtons.forEach(btn => btn.classList.remove('bg-yellow-500', 'text-gray-900'));
-        button.classList.add('bg-yellow-500', 'text-gray-900');
-        tripCards.forEach(card => {
-          const category = card.getAttribute('data-category');
-          if (filter === 'all' || category === filter) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Кнопка "Наверх"
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        scrollTopBtn.classList.remove('opacity-0');
-        scrollTopBtn.classList.add('opacity-100');
-      } else {
-        scrollTopBtn.classList.remove('opacity-100');
-        scrollTopBtn.classList.add('opacity-0');
-      }
-    });
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Темная тема
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      const isDark = body.classList.contains('dark');
-      themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-    if (localStorage.getItem('theme') === 'dark') {
-      body.classList.add('dark');
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-
-    // Уведомление об отправке формы
-    document.addEventListener("DOMContentLoaded", function () {
-      const url = new URL(window.location.href);
-      if (url.searchParams.get("success") === "true") {
-        alert("Заявка успешно отправлена! Мы свяжемся с вами.");
-      }
-    });
-
-    // Счетчик посещений
-    fetch('https://api.countapi.xyz/hit/reshitelnye/visits')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('visitorCount').textContent = `Посещений сайта: ${data.value}`;
-      });
-
-    // Календарь
-    const tourDates = {
-      '2025-05-15': { name: 'Поход в Крым', icon: '🥾' },
-      '2025-06-03': { name: 'Скалолазание', icon: '🧗' },
-      '2025-07-20': { name: 'Летний лагерь', icon: '🏕️' }
-    };
-
-    const renderCalendar = () => {
-      const calendar = document.getElementById('calendarGrid');
-      const year = 2025;
-      const month = 4; // Май (0-based, т.е. 4 = май)
-
-      const date = new Date(year, month, 1);
-      const startDay = date.getDay() === 0 ? 7 : date.getDay(); // Понедельник = 1
-      const totalDays = new Date(year, month + 1, 0).getDate();
-
-      // Пустые ячейки перед началом месяца
-      for (let i = 1; i < startDay; i++) {
-        const empty = document.createElement('div');
-        calendar.appendChild(empty);
-      }
-
-      for (let day = 1; day <= totalDays; day++) {
-        const fullDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const div = document.createElement('div');
-        div.className = 'border rounded-lg py-4 px-2 hover:bg-yellow-100 cursor-pointer';
-
-        if (tourDates[fullDate]) {
-          div.classList.add('bg-yellow-200', 'font-bold', 'text-green-800');
-          div.innerHTML = `${tourDates[fullDate].icon}<br>${day}`;
-          div.title = tourDates[fullDate].name;
-          div.onclick = () => alert(`${tourDates[fullDate].name} (${fullDate})`);
-        } else {
-          div.textContent = day;
-        }
-
-        calendar.appendChild(div);
-      }
-    };
-
-    document.addEventListener('DOMContentLoaded', renderCalendar);
-  </script>
-  <script>
-    // Инициализация AOS
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-  </script>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      netlifyIdentity.on("init", user => {
-        if (!user) netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      });
-    }
-  </script>
-</body>
-</html>
+   
