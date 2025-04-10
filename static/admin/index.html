@@ -4,9 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Админка туров</title>
+
+  <!-- Подключаем Decap CMS через CDN (самый надёжный способ) -->
   <script src="/js/decap-cms.js" defer></script>
+
+  <!-- Флаг, чтобы мы вручную инициализировали CMS -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
 </head>
 <body>
   <div id="nc-root" style="min-height: 100vh;"></div>
+
+  <!-- Инициализация с указанием конфига -->
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      CMS.init({ config: "/admin/config.yml" });
+    });
+  </script>
 </body>
 </html>
