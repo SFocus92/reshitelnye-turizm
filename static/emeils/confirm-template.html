@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Подтверждение email</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .button { 
+            display: inline-block; 
+            background: #2196F3; 
+            color: white; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Подтвердите ваш email</h2>
+        <p>Спасибо за регистрацию на <strong>reshitelnie.netify.app</strong>!</p>
+        <p>Для активации аккаунта нажмите кнопку ниже:</p>
+        <a href="{{ .ConfirmationURL }}" class="button">Подтвердить email</a>
+        <p>Ссылка действительна 24 часа.</p>
+    </div>
+</body>
+</html>
