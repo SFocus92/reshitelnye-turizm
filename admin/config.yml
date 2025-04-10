@@ -1,18 +1,27 @@
 backend:
   name: git-gateway
   branch: main
+  commit_messages:
+    create: "Создан тур: {{slug}}"
+    update: "Обновлён тур: {{slug}}"
+    delete: "Удалён тур: {{slug}}"
+    uploadMedia: "Загружено изображение: {{path}}"
+    deleteMedia: "Удалено изображение: {{path}}"
 
 media_folder: "static/img"
 public_folder: "/img"
 
 collections:
   - name: "tours"
-    label: "Tours"
+    label: "Туры"
+    label_singular: "Тур"
     folder: "content/tours"
     create: true
+    slug: "{{fields.title}}-{{year}}-{{month}}-{{day}}"
     fields:
-      - { name: "title", label: "Заголовок", widget: "string" }
-      - { name: "description", label: "Описание", widget: "text" }
+      - { name: "title", label: "Название тура", widget: "string" }
+      - { name: "description", label: "Описание", widget: "markdown" }
       - { name: "price", label: "Цена", widget: "string" }
-      - { name: "image", label: "Изображение", widget: "image" }
-      - { name: "date", label: "Дата", widget: "datetime" }
+      - { name: "date", label: "Дата тура", widget: "datetime" }
+      - { name: "image", label: "Главное изображение", widget: "image" }
+      - { name: "gallery", label: "Галерея", widget: "list", field: { name: "image", label: "Фото", widget: "image" } }
