@@ -1,0 +1,43 @@
+/* Кастомные стили */
+.hero-bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+}
+
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.modal-content-wrapper {
+  max-height: 80vh;
+}
+
+.modal-content {
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.dark {
+  background-color: #1f2937;
+  color: #f9fafb;
+}
+
+.dark .bg-gray-50,
+.dark .bg-white,
+.dark .bg-gray-100 {
+  background-color: #374151;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-700,
+.dark .text-gray-800 {
+  color: #d1d5db;
+}
+
+@media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
