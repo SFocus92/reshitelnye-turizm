@@ -1,0 +1,12 @@
+{
+  "name": "reshitelnye-turizm",
+  "version": "1.0.0",
+  "description": "Website for Reshitelnye active tourism",
+  "scripts": {
+    "build:css": "tailwindcss -i ./styles.css -o ./css/output.css --minify",
+    "watch:css": "tailwindcss -i ./styles.css -o ./css/output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
