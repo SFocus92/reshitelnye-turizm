@@ -3,28 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com https://cdn-icons-png.flaticon.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://fonts.googleapis.com 'unsafe-inline'; script-src 'self' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline' 'unsafe-eval'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://images.unsplash.com https://cdn-icons-png.flaticon.com; style-src 'self' https://cdnjs.cloudflare.com https://unpkg.com https://fonts.googleapis.com 'unsafe-inline'; script-src 'self' https://unpkg.com 'unsafe-inline' 'unsafe-eval'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;" />
   <title>Решительные - активный туризм с Алексеем</title>
   <meta name="description" content="Профессиональные туры по Крыму и России: скалолазание, походы, рыбалка и горнолыжные спуски с опытными гидами." />
   <meta name="keywords" content="активный туризм, туры по Крыму, скалолазание, походы, горные лыжи, Россия, Алексей" />
   <meta name="author" content="Решительные" />
-  <!-- Open Graph для соцсетей -->
   <meta property="og:title" content="Решительные - активный туризм с Алексеем" />
   <meta property="og:description" content="Профессиональные туры по Крыму и России: скалолазание, походы, рыбалка и горнолыжные спуски." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2070&q=80" />
   <meta property="og:url" content="https://sfocus92.github.io/reshitelnye-turizm/" />
   <meta property="og:type" content="website" />
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/684/684908.png" type="image/png" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="css/output.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- Tailwind CDN (замените на локальный output.css в продакшене) -->
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body class="font-sans bg-gray-50">
   <!-- Навигация -->
   <nav class="bg-green-800 text-white shadow-lg sticky top-0 z-50">
@@ -54,7 +50,6 @@
         </button>
       </div>
     </div>
-    <!-- Мобильное меню -->
     <div class="md:hidden hidden bg-green-700 px-4 py-2" id="mobileMenu">
       <div class="flex flex-col space-y-3">
         <a class="hover:text-yellow-300 transition py-1" href="#home">Главная</a>
@@ -66,7 +61,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Герой-секция -->
   <section class="hero-bg min-h-screen flex items-center justify-center text-white" id="home" data-aos="fade-up">
     <div class="container mx-auto px-4 text-center">
@@ -78,7 +72,6 @@
       </div>
     </div>
   </section>
-
   <!-- О нас -->
   <section class="py-20 bg-white" id="about" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -88,7 +81,7 @@
       </div>
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
-          <img alt="Наша команда" class="rounded-lg shadow-xl w-full h-auto" src="https://images.unsplash.com/photo-1505735754789-3404132203ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" loading="lazy" />
+          <img alt="Наша команда" class="rounded-lg shadow-xl w-full h-auto" src="https://images.unsplash.com/photo-1505735754789-3404132203ed?auto=format&fit=crop&w=2070&q=80" loading="lazy" />
         </div>
         <div class="md:w-1/2">
           <h3 class="text-2xl font-bold text-gray-800 mb-4">Решительные - команда профессионалов</h3>
@@ -112,7 +105,6 @@
       </div>
     </div>
   </section>
-
   <!-- Галерея -->
   <section class="py-20 bg-gray-100" id="gallery" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -121,35 +113,30 @@
         <p class="text-gray-600 max-w-2xl mx-auto">Посмотрите фото и видео из наших последних путешествий. Кликайте на медиа, чтобы увидеть больше!</p>
         <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="mediaGrid">
-        <!-- Медиа добавляются через JavaScript -->
-      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="mediaGrid"></div>
       <div class="text-center mt-10">
         <button class="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3 rounded-full transition" id="loadMoreMedia">Загрузить больше</button>
       </div>
     </div>
   </section>
-
   <!-- Модальное окно для галереи -->
-  <div class="modal" id="myModal">
-    <span class="close" onclick="closeModal()">×</span>
-    <div class="modal-content-wrapper">
-      <img class="modal-content" id="modalImage">
+  <div class="modal hidden fixed inset-0 bg-black bg-opacity-75 z-50" id="myModal">
+    <span class="close absolute top-5 right-5 text-white text-3xl cursor-pointer" id="closeModal">×</span>
+    <div class="modal-content-wrapper relative max-w-4xl mx-auto my-10">
+      <img class="modal-content w-full rounded-lg" id="modalImage">
       <div class="modal-caption text-white text-center mt-4" id="modalCaption"></div>
-      <button class="modal-prev absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-3xl" onclick="changeImage(-1)">❮</button>
-      <button class="modal-next absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-3xl" onclick="changeImage(1)">❯</button>
+      <button class="modal-prev absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-3xl" id="prevImage">❮</button>
+      <button class="modal-next absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-3xl" id="nextImage">❯</button>
     </div>
   </div>
-
-  <!-- Параллакс секция -->
-  <section class="parallax py-32 text-white" style="background-image: url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80');" data-aos="fade-up">
+  <!-- Параллакс -->
+  <section class="parallax py-32 text-white" style="background-image: url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=2076&q=80');" data-aos="fade-up">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы к приключениям?</h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">Присоединяйтесь к нашим путешествиям и откройте для себя красоту природы России</p>
       <a class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition inline-block" href="#trips">Выбрать тур</a>
     </div>
   </section>
-
   <!-- Путешествия -->
   <section class="py-20 bg-white" id="trips" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -164,12 +151,9 @@
           <button class="filter-btn px-4 py-2 bg-gray-200 rounded-lg" data-filter="skiing">Горные лыжи</button>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tripsGrid">
-        <!-- Туры добавляются через JavaScript -->
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tripsGrid"></div>
     </div>
   </section>
-
   <!-- Календарь -->
   <section class="py-20 bg-gray-100" id="calendar" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -188,12 +172,14 @@
           <p class="text-gray-600">20–25 июля 2025</p>
         </div>
       </div>
-      <div id="calendarGrid" class="grid grid-cols-7 gap-2 text-center text-gray-700">
-        <!-- Календарь добавляется через JavaScript -->
+      <div class="flex justify-between mb-4">
+        <button id="prevMonth" class="text-green-600 font-bold">← Предыдущий</button>
+        <h3 id="monthYear" class="text-xl font-bold text-gray-800"></h3>
+        <button id="nextMonth" class="text-green-600 font-bold">Следующий →</button>
       </div>
+      <div id="calendarGrid" class="grid grid-cols-7 gap-2 text-center text-gray-700"></div>
     </div>
   </section>
-
   <!-- Отзывы -->
   <section class="py-20 bg-gray-100" id="reviews" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -214,7 +200,6 @@
       </div>
     </div>
   </section>
-
   <!-- Контакты -->
   <section class="py-20 bg-white" id="contact" data-aos="fade-up">
     <div class="container mx-auto px-4">
@@ -243,7 +228,6 @@
       </div>
     </div>
   </section>
-
   <!-- Карта -->
   <section class="py-16 bg-white" id="map" data-aos="fade-up">
     <div class="container mx-auto px-4 text-center">
@@ -252,7 +236,6 @@
       <iframe src="https://yandex.ru/map-widget/v1/?ll=33.419384%2C44.564893&mode=whatshere&whatshere%5Bpoint%5D=33.419384%2C44.564893&whatshere%5Bzoom%5D=17&z=17" width="100%" height="400" frameborder="0" allowfullscreen="true" style="border-radius: 12px;"></iframe>
     </div>
   </section>
-
   <!-- Подписка -->
   <section class="py-20 bg-gray-100" id="subscribe" data-aos="fade-up">
     <div class="container mx-auto px-4 text-center">
@@ -266,25 +249,20 @@
       </form>
     </div>
   </section>
-
   <!-- Футер -->
   <footer class="bg-gray-800 text-white py-6 mt-16">
     <div class="container mx-auto px-4 text-center text-sm space-y-2">
       <p>© 2025 Решительные. Все права защищены.</p>
       <p>ИП Иванов Алексей Сергеевич, ИНН 1234567890, ОГРНИП 321123456789012</p>
-      <p>
-        <a href="mailto:reshitelnie@mail.ru" class="underline hover:text-yellow-400">reshitelnie@mail.ru</a>
-      </p>
+      <p><a href="mailto:reshitelnie@mail.ru" class="underline hover:text-yellow-400">reshitelnie@mail.ru</a></p>
       <p>Данный сайт не является публичной офертой. Участие в турах осуществляется по предварительному согласованию.</p>
       <p>Информация не подлежит лицензированию (статья 17 закона «О лицензировании отдельных видов деятельности»).</p>
     </div>
   </footer>
-
   <!-- Кнопка "Наверх" -->
   <button id="scrollTopBtn" class="fixed bottom-5 right-5 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition opacity-0" aria-label="Наверх">
     <i class="fas fa-arrow-up"></i>
   </button>
-
-  <script src="scripts.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
