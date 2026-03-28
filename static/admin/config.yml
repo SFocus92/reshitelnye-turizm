@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"      # куда сохраняются изображения
-public_folder: "/images/uploads"    # как отображаются изображения на сайте
+media_folder: "static/img"
+public_folder: "/img"
 
 collections:
   - name: "tours"
@@ -12,17 +12,18 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Название тура", name: "title", widget: "string" }
-      - { label: "Описание", name: "description", widget: "text" }
-      - { label: "Дата начала", name: "start_date", widget: "datetime" }
-      - { label: "Фото", name: "image", widget: "image" }
-
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Описание", name: "description", widget: "text"}
+      - {label: "Изображение", name: "image", widget: "image"}
+      - {label: "Категория", name: "category", widget: "select", options: ["hiking", "climbing", "skiing"]}
+      - {label: "Дата", name: "date", widget: "datetime"}
   - name: "reviews"
     label: "Отзывы"
     folder: "content/reviews"
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Имя", name: "author", widget: "string" }
-      - { label: "Текст отзыва", name: "body", widget: "text" }
-      - { label: "Дата", name: "date", widget: "datetime" }
+      - {label: "Автор", name: "author", widget: "string"}
+      - {label: "Город", name: "city", widget: "string"}
+      - {label: "Текст отзыва", name: "body", widget: "text"}
+      - {label: "Дата", name: "date", widget: "datetime"}

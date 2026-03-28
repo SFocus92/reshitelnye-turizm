@@ -1,102 +1,108 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/684/684908.png" type="image/png">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Решительные - активный туризм с Алексеем</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        .gallery-item {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .gallery-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-        .trip-card {
-            transition: all 0.3s ease;
-        }
-        .trip-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .upload-area {
-            border: 2px dashed #cbd5e0;
-            transition: all 0.3s ease;
-        }
-        .upload-area:hover {
-            border-color: #4299e1;
-            background-color: rgba(66, 153, 225, 0.05);
-        }
-        
-        /* Стили для модального окна */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
-        }
+    .hero-bg {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        background-size: cover;
+        background-position: center;
+    }
+    .gallery-item {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .trip-card {
+        transition: all 0.3s ease;
+    }
+    .trip-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    .parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .upload-area {
+        border: 2px dashed #cbd5e0;
+        transition: all 0.3s ease;
+    }
+    .upload-area:hover {
+        border-color: #4299e1;
+        background-color: rgba(66, 153, 225, 0.05);
+    }
+
+    /* Стили для модального окна */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 1200px;
+        max-height: 80vh;
+        object-fit: contain;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .close:hover {
+        color: #bbb;
+    }
+
+    /* Тёмная тема */
+    body.dark { background-color: #1a202c; color: #e2e8f0; }
+    body.dark .bg-white { background-color: #2d3748 !important; }
+    body.dark .bg-gray-50 { background-color: #1a202c !important; }
+    body.dark .bg-gray-100 { background-color: #2d3748 !important; }
+    body.dark .text-gray-800, body.dark .text-gray-700, body.dark .text-gray-600 { color: #e2e8f0 !important; }
+    body.dark .text-gray-500 { color: #a0aec0 !important; }
+    body.dark .shadow-md, body.dark .shadow-lg { box-shadow: 0 4px 6px rgba(0,0,0,0.3) !important; }
+
+    /* Адаптивные стили */
+    @media (max-width: 768px) {
         .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 1200px;
-            max-height: 80vh;
-            object-fit: contain;
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
+            width: 95%;
+            max-height: 70vh;
         }
         .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
+            font-size: 30px;
+            top: 10px;
+            right: 20px;
         }
-        .close:hover {
-            color: #bbb;
-        }
-        
-        /* Адаптивные стили */
-        @media (max-width: 768px) {
-            .modal-content {
-                width: 95%;
-                max-height: 70vh;
-            }
-            .close {
-                font-size: 30px;
-                top: 10px;
-                right: 20px;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
-
 
 <body class="font-sans bg-gray-50">
 <!-- Навигация -->
@@ -114,6 +120,9 @@
 <a class="hover:text-yellow-300 transition" href="#contact">Контакты</a>
 </div>
 <div class="flex items-center space-x-4">
+<button class="text-xl hover:text-yellow-300 transition" id="themeToggle" aria-label="Переключить тему">
+  <i class="fas fa-moon"></i>
+</button>
 <a class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-full flex items-center space-x-2 transition" href="https://t.me/+QLBVE3-mFOw5NGIy" target="_blank">
 <i class="fab fa-telegram"></i>
 <span>Наш Telegram</span>
@@ -197,7 +206,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.9</span>
@@ -213,7 +222,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.8</span>
@@ -229,7 +238,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>5.0</span>
@@ -245,7 +254,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.9</span>
@@ -255,14 +264,14 @@
 </div>
 <!-- Дополнительные фото по Крыму -->
 <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1500534623283-312aade485b7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80', 'Горы Крыма', 'Август 2023', '5.0')">
-<img alt="Горы Крыма" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+<img alt="Горы Крыма" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Восход в горах Крыма</h3>
 <p class="text-sm text-gray-600 mt-1">Август 2023</p>
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>5.0</span>
@@ -278,7 +287,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.9</span>
@@ -294,7 +303,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.8</span>
@@ -303,31 +312,17 @@
 </div>
 </div>
 <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1925&amp;q=80', 'Морской берег', 'Июль 2023', '4.7')">
-<img alt="Морской берег" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1925&amp;q=80"/>
+<img alt="Морской берег" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1925&amp;q=80"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Морской берег Крыма</h3>
 <p class="text-sm text-gray-600 mt-1">Июль 2023</p>
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.7</span>
-</div>
-</div>
-</div>
-</div>
-<div '5.0')"="" 'август="" ,="" 2023',="" alt="Морской берег" class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" https:="" images.unsplash.com="" onclick="openModal(" photo-1501854140801-50d01698950b?ixlib='rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1925&amp;q=80"'>
-<div class="p-4">
-<p class="text-sm text-gray-600 mt-1">Август 2023</p>
-<div class="flex justify-between items-center mt-3">
-<div class="text-blue-500 flex items-center">
-<i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
-<div class="flex space-x-2">
-<span class="text-yellow-500"><i class="fas fa-star"></i></span>
-<span>5.0</span>
 </div>
 </div>
 </div>
@@ -340,7 +335,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.9</span>
@@ -356,7 +351,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>4.8</span>
@@ -372,7 +367,7 @@
 <div class="flex justify-between items-center mt-3">
 <div class="text-blue-500 flex items-center">
 <i class="fas fa-expand mr-1"></i> Увеличить
-                            </div>
+</div>
 <div class="flex space-x-2">
 <span class="text-yellow-500"><i class="fas fa-star"></i></span>
 <span>5.0</span>
@@ -395,146 +390,37 @@
 </div>
 </section>
 <!-- Путешествия -->
-<section <section="" class="py-20 bg-white" id="trips">
+<section class="py-20 bg-white" id="trips">
 <div class="container mx-auto px-4">
 <div class="text-center mb-16">
 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Наши туры</h2>
 <p class="text-gray-600 max-w-2xl mx-auto">Выбирайте и бронируйте в Telegram</p>
 <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Тур 1: Походы по Крыму -->
-<div class="trip-card bg-white rounded-lg overflow-hidden shadow-lg">
-<img alt="Походы по Крыму" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
-<div class="p-6">
-<h3 class="text-xl font-bold text-gray-800 mb-2">Походы по Крыму</h3>
-<p class="text-gray-600 mb-4">Живописные маршруты с ночёвками, водопадами и рассветами в горах. Подходит для новичков и опытных.</p>
-<p class="text-sm text-gray-500 mb-4 italic">Цена по запросу</p>
-<a class="booking-btn w-full block text-center bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded-lg" href="https://t.me/+QLBVE3-mFOw5NGIy" target="_blank">
-            Забронировать в Telegram
-          </a>
+<div class="flex justify-center gap-3 mb-10 flex-wrap">
+  <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-600 bg-green-600 text-white font-semibold transition" data-filter="all">Все туры</button>
+  <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-600 text-green-700 font-semibold transition" data-filter="hiking">Походы</button>
+  <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-600 text-green-700 font-semibold transition" data-filter="climbing">Скалолазание</button>
+  <button class="filter-btn px-5 py-2 rounded-full border-2 border-green-600 text-green-700 font-semibold transition" data-filter="skiing">Лыжи</button>
 </div>
-</div>
-<!-- Тур 2: Скалолазание -->
-<div class="trip-card bg-white rounded-lg overflow-hidden shadow-lg">
-<img alt="Скалолазание" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
-<div class="p-6">
-<h3 class="text-xl font-bold text-gray-800 mb-2">Тур по скалолазанию</h3>
-<p class="text-gray-600 mb-4">Тренировки и восхождения с опытными инструкторами. Оборудование предоставляется. Безопасность — приоритет.</p>
-<a class="booking-btn w-full block text-center bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded-lg" href="https://t.me/+QLBVE3-mFOw5NGIy" target="_blank">
-            Забронировать в Telegram
-          </a>
-</div>
-</div>
-<!-- Тур 3: Горнолыжные курорты -->
-<div class="trip-card bg-white rounded-lg overflow-hidden shadow-lg">
-<img alt="Горнолыжные туры" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&amp;fit=crop&amp;w=2076&amp;q=80"/>
-<div class="p-6">
-<h3 class="text-xl font-bold text-gray-800 mb-2">Горнолыжные курорты России</h3>
-<p class="text-gray-600 mb-4">Шерегеш, Эльбрус, Красная поляна. Катание, проживание и кайф от снежных склонов!</p>
-<a class="booking-btn w-full block text-center bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold py-2 px-4 rounded-lg" href="https://t.me/+QLBVE3-mFOw5NGIy" target="_blank">
-            Забронировать в Telegram
-          </a>
-</div>
-</div>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tripsGrid"></div>
 </div>
 </section>
+<!-- Календарь туров -->
 <section class="py-20 bg-gray-100" id="calendar">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Ближайшие даты туров</h2>
-    <div class="grid md:grid-cols-3 gap-6 text-center">
-      <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-xl font-semibold text-green-700 mb-2">Поход в Крым</h3>
-        <p class="text-gray-600">15–18 мая 2025</p>
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Календарь туров</h2>
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-6">
+      <div class="flex justify-between items-center mb-6">
+        <button id="prevMonth" class="text-green-700 hover:text-green-900 text-2xl font-bold">&lt;</button>
+        <h3 id="monthYear" class="text-xl font-bold text-gray-800"></h3>
+        <button id="nextMonth" class="text-green-700 hover:text-green-900 text-2xl font-bold">&gt;</button>
       </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-xl font-semibold text-green-700 mb-2">Скалолазание</h3>
-        <p class="text-gray-600">3–6 июня 2025</p>
-      </div>
-      <div class="bg-white rounded-lg shadow p-6">
-        <h3 class="text-xl font-semibold text-green-700 mb-2">Летний лагерь</h3>
-        <p class="text-gray-600">20–25 июля 2025</p>
-      </div>
+      <div id="calendarGrid" class="grid grid-cols-7 gap-1 text-center text-sm"></div>
     </div>
   </div>
 </section>
-
-<!DOCTYPE html>
-
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Решительные - активный туризм</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<style>
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
-    }
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 90vh;
-    }
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      color: white;
-      font-size: 30px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .gallery-item:hover {
-      transform: scale(1.02);
-      transition: 0.3s;
-      cursor: pointer;
-    }
-  </style>
-</link></meta></meta></head>
-<body class="bg-gray-50">
-<section class="py-12 px-4" id="gallery">
-<div class="text-center mb-8">
-<h2 class="text-3xl font-bold">Галерея</h2>
-<p class="text-gray-600">Нажмите на фото, чтобы увеличить</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-<img alt="Поход в горы" class="gallery-item w-full h-48 object-cover rounded" onclick="openModal(this.src)" src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
-<img alt="Скалолазание" class="gallery-item w-full h-48 object-cover rounded" onclick="openModal(this.src)" src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
-<img alt="Горные лыжи" class="gallery-item w-full h-48 object-cover rounded" onclick="openModal(this.src)" src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
-<img alt="Горы Крыма" class="gallery-item w-full h-48 object-cover rounded" onclick="openModal(this.src)" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
-<img alt="Озеро в Крыму" class="gallery-item w-full h-48 object-cover rounded" onclick="openModal(this.src)" src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?auto=format&amp;fit=crop&amp;w=800&amp;q=80">
-</img></img></img></img></img></div>
-</section>
-<div class="modal" id="myModal" onclick="closeModal()">
-<span class="modal-close" onclick="closeModal()">Закрыть</span>
-<img class="modal-content" id="modalImage">
-</img></div>
-<script>
-    function openModal(src) {
-      const modal = document.getElementById('myModal');
-      const modalImg = document.getElementById('modalImage');
-      modal.style.display = 'block';
-      modalImg.src = src;
-    }
-    function closeModal() {
-      document.getElementById('myModal').style.display = 'none';
-    }
-  </script>
-</body>
-</html>
-
+<!-- Контакты -->
 <section class="py-20 bg-white" id="contact">
 <div class="container mx-auto px-4">
 <div class="text-center mb-10">
@@ -562,6 +448,7 @@
 </div>
 </div>
 </section>
+<!-- Отзывы -->
 <section class="py-20 bg-gray-100" id="reviews">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Отзывы</h2>
@@ -581,6 +468,7 @@
     </div>
   </div>
 </section>
+<!-- Карта -->
 <section class="py-16 bg-white" id="map">
   <div class="container mx-auto px-4 text-center">
     <h2 class="text-3xl font-bold text-gray-800 mb-4">Точка сбора — Севастополь</h2>
@@ -588,8 +476,12 @@
     <iframe src="https://yandex.ru/map-widget/v1/?ll=33.419384%2C44.564893&mode=whatshere&whatshere%5Bpoint%5D=33.419384%2C44.564893&whatshere%5Bzoom%5D=17&z=17" width="100%" height="400" frameborder="0" allowfullscreen="true" style="border-radius: 12px;"></iframe>
   </div>
 </section>
-<p id="visitorCount" class="text-xs text-gray-400 mt-2">Загрузка счётчика...</p>
-<footer class="bg-gray-800 text-white py-6 mt-16">
+<!-- Счётчик посещений -->
+<div class="text-center py-2">
+  <p id="visitorCount" class="text-xs text-gray-400">Загрузка счётчика...</p>
+</div>
+<!-- Подвал -->
+<footer class="bg-gray-800 text-white py-6 mt-8">
   <div class="container mx-auto px-4 text-center text-sm space-y-2">
     <p>© 2025 Решительные. Все права защищены.</p>
     <p>ИП Иванов Алексей Сергеевич, ИНН 1234567890, ОГРНИП 321123456789012</p>
@@ -600,6 +492,21 @@
     <p>Информация не подлежит лицензированию (статья 17 закона «О лицензировании отдельных видов деятельности»).</p>
   </div>
 </footer>
+
+<!-- Модальное окно галереи -->
+<div class="modal hidden" id="myModal">
+  <span class="close" id="closeModal">&times;</span>
+  <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/80 transition z-10" id="prevImage">&#10094;</button>
+  <img class="modal-content" id="modalImage" alt="Фото галереи">
+  <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 rounded-full w-12 h-12 flex items-center justify-center hover:bg-black/80 transition z-10" id="nextImage">&#10095;</button>
+  <div id="modalCaption" class="text-white text-center py-4 text-lg"></div>
+</div>
+
+<!-- Кнопка наверх -->
+<button id="scrollTopBtn" class="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition opacity-0 z-50">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const url = new URL(window.location.href);
@@ -609,10 +516,12 @@
   });
 </script>
 <script>
-  fetch('https://api.countapi.xyz/hit/reshitelnye/visits')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('visitorCount').textContent = `Посещений сайта: ${data.value}`;
-    });
+  (function() {
+    let count = parseInt(localStorage.getItem('reshitelnye_visits') || '0') + 1;
+    localStorage.setItem('reshitelnye_visits', count.toString());
+    document.getElementById('visitorCount').textContent = 'Ваши посещения: ' + count;
+  })();
 </script>
-</body></html>
+<script src="js/scripts.js"></script>
+</body>
+</html>
