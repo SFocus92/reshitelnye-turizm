@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/684/684908.png" type="image/png">
+<link rel="icon" href="static/img/favicon.svg" type="image/svg+xml">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Решительные - активный туризм с Алексеем</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="static/js/tailwind.js"></script>
+<script>
+  // Fallback: если локальный Tailwind не загрузился
+  if (typeof tailwind === 'undefined') {
+    var s = document.createElement('script');
+    s.src = 'https://cdn.tailwindcss.com';
+    document.head.appendChild(s);
+  }
+</script>
+<link href="static/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" media="none" onload="if(media!=='all')media='all'"/>
 <style>
     .hero-bg {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('static/img/hero-bg.jpg');
         background-size: cover;
         background-position: center;
     }
@@ -163,7 +172,7 @@
 </div>
 <div class="flex flex-col md:flex-row items-center">
 <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
-<img alt="Наша команда" class="rounded-lg shadow-xl w-full h-auto" src="https://images.unsplash.com/photo-1505735754789-3404132203ed?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+<img alt="Наша команда" class="rounded-lg shadow-xl w-full h-auto" src="static/img/about-team.jpg"/>
 </div>
 <div class="md:w-1/2">
 <h3 class="text-2xl font-bold text-gray-800 mb-4">Решительные - команда профессионалов</h3>
@@ -198,8 +207,8 @@
 <!-- Галерея медиа -->
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="mediaGrid">
 <!-- Примеры медиа -->
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1504851149312-7a075b496cc7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2065&amp;q=80', 'Поход в Крымские горы', 'Май 2023', '4.9')">
-<img alt="Поход в горы" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1504851149312-7a075b496cc7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2065&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-hiking.jpg', 'Поход в Крымские горы', 'Май 2023', '4.9')">
+<img alt="Поход в горы" class="w-full h-48 object-cover" src="static/img/gallery-hiking.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Поход в Крымские горы</h3>
 <p class="text-sm text-gray-600 mt-1">Май 2023</p>
@@ -214,8 +223,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80', 'Рыбалка на озере', 'Июнь 2023', '4.8')">
-<img alt="Рыбалка" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-fishing.jpg', 'Рыбалка на озере', 'Июнь 2023', '4.8')">
+<img alt="Рыбалка" class="w-full h-48 object-cover" src="static/img/gallery-fishing.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Рыбалка на озере</h3>
 <p class="text-sm text-gray-600 mt-1">Июнь 2023</p>
@@ -230,8 +239,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80', 'Скалолазание в Крыму', 'Июль 2023', '5.0')">
-<img alt="Скалолазание" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-climbing.jpg', 'Скалолазание в Крыму', 'Июль 2023', '5.0')">
+<img alt="Скалолазание" class="w-full h-48 object-cover" src="static/img/gallery-climbing.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Скалолазание в Крыму</h3>
 <p class="text-sm text-gray-600 mt-1">Июль 2023</p>
@@ -246,8 +255,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2076&amp;q=80', 'Горные лыжи на Эльбрусе', 'Январь 2023', '4.9')">
-<img alt="Горные лыжи" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2076&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-skiing.jpg', 'Горные лыжи на Эльбрусе', 'Январь 2023', '4.9')">
+<img alt="Горные лыжи" class="w-full h-48 object-cover" src="static/img/gallery-skiing.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Горные лыжи на Эльбрусе</h3>
 <p class="text-sm text-gray-600 mt-1">Январь 2023</p>
@@ -263,8 +272,8 @@
 </div>
 </div>
 <!-- Дополнительные фото по Крыму -->
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1500534623283-312aade485b7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80', 'Горы Крыма', 'Август 2023', '5.0')">
-<img alt="Горы Крыма" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-mountains.jpg', 'Горы Крыма', 'Август 2023', '5.0')">
+<img alt="Горы Крыма" class="w-full h-48 object-cover" src="static/img/gallery-mountains.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Восход в горах Крыма</h3>
 <p class="text-sm text-gray-600 mt-1">Август 2023</p>
@@ -279,8 +288,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80', 'Озеро в Крыму', 'Сентябрь 2023', '4.9')">
-<img alt="Озеро в Крыму" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-lake.jpg', 'Озеро в Крыму', 'Сентябрь 2023', '4.9')">
+<img alt="Озеро в Крыму" class="w-full h-48 object-cover" src="static/img/gallery-lake.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Озеро в горах Крыма</h3>
 <p class="text-sm text-gray-600 mt-1">Сентябрь 2023</p>
@@ -295,8 +304,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2074&amp;q=80', 'Лесной поход', 'Октябрь 2023', '4.8')">
-<img alt="Лесной поход" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2074&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-forest.jpg', 'Лесной поход', 'Октябрь 2023', '4.8')">
+<img alt="Лесной поход" class="w-full h-48 object-cover" src="static/img/gallery-forest.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Лесной поход в Крыму</h3>
 <p class="text-sm text-gray-600 mt-1">Октябрь 2023</p>
@@ -311,8 +320,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1925&amp;q=80', 'Морской берег', 'Июль 2023', '4.7')">
-<img alt="Морской берег" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1925&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-sea.jpg', 'Морской берег', 'Июль 2023', '4.7')">
+<img alt="Морской берег" class="w-full h-48 object-cover" src="static/img/gallery-sea.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Морской берег Крыма</h3>
 <p class="text-sm text-gray-600 mt-1">Июль 2023</p>
@@ -327,8 +336,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1948&amp;q=80', 'Закат в горах', 'Сентябрь 2023', '4.9')">
-<img alt="Закат в горах" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1948&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-sunset.jpg', 'Закат в горах', 'Сентябрь 2023', '4.9')">
+<img alt="Закат в горах" class="w-full h-48 object-cover" src="static/img/gallery-sunset.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Закат в Крымских горах</h3>
 <p class="text-sm text-gray-600 mt-1">Сентябрь 2023</p>
@@ -343,8 +352,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1974&amp;q=80', 'Лесной ручей', 'Июнь 2023', '4.8')">
-<img alt="Лесной ручей" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1974&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-stream.jpg', 'Лесной ручей', 'Июнь 2023', '4.8')">
+<img alt="Лесной ручей" class="w-full h-48 object-cover" src="static/img/gallery-stream.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Лесной ручей в Крыму</h3>
 <p class="text-sm text-gray-600 mt-1">Июнь 2023</p>
@@ -359,8 +368,8 @@
 </div>
 </div>
 </div>
-<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80', 'Скалы у моря', 'Июль 2023', '5.0')">
-<img alt="Скалы у моря" class="w-full h-48 object-cover" src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2070&amp;q=80"/>
+<div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md" onclick="openModal('static/img/gallery-rocks.jpg', 'Скалы у моря', 'Июль 2023', '5.0')">
+<img alt="Скалы у моря" class="w-full h-48 object-cover" src="static/img/gallery-rocks.jpg"/>
 <div class="p-4">
 <h3 class="font-semibold text-gray-800">Скалы у моря в Крыму</h3>
 <p class="text-sm text-gray-600 mt-1">Июль 2023</p>
@@ -382,7 +391,7 @@
 </div>
 </section>
 <!-- Параллакс секция -->
-<section class="parallax py-32 text-white" style="background-image: url('https://images.unsplash.com/photo-1454496522488-7a8e488e8606?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=2076&amp;q=80');">
+<section class="parallax py-32 text-white" style="background-image: url('static/img/parallax-bg.jpg');">
 <div class="container mx-auto px-4 text-center">
 <h2 class="text-3xl md:text-4xl font-bold mb-6">Готовы к приключениям?</h2>
 <p class="text-xl mb-8 max-w-2xl mx-auto">Присоединяйтесь к нашим путешествиям и откройте для себя красоту природы России</p>

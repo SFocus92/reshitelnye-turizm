@@ -23,17 +23,17 @@ if (localStorage.getItem('theme') === 'dark') {
 // Модальное окно галереи
 let currentIndex = 0;
 const galleryImages = [
-  { src: 'https://images.unsplash.com/photo-1504851149312-7a075b496cc7?auto=format&fit=crop&w=2065&q=80', title: 'Поход в Крымские горы', date: 'Май 2023', rating: '4.9' },
-  { src: 'https://images.unsplash.com/photo-1530541930197-ff16ac917b0e?auto=format&fit=crop&w=2070&q=80', title: 'Рыбалка на озере', date: 'Июнь 2023', rating: '4.8' },
-  { src: 'https://images.unsplash.com/photo-1511994298241-608e28f14fde?auto=format&fit=crop&w=2070&q=80', title: 'Скалолазание в Крыму', date: 'Июль 2023', rating: '5.0' },
-  { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=2076&q=80', title: 'Горные лыжи на Эльбрусе', date: 'Январь 2023', rating: '4.9' },
-  { src: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2070&q=80', title: 'Горы Крыма', date: 'Август 2023', rating: '5.0' },
-  { src: 'https://images.unsplash.com/photo-1470114716159-e389f8712fda?auto=format&fit=crop&w=2070&q=80', title: 'Озеро в Крыму', date: 'Сентябрь 2023', rating: '4.9' },
-  { src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2074&q=80', title: 'Лесной поход', date: 'Октябрь 2023', rating: '4.8' },
-  { src: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1925&q=80', title: 'Морской берег', date: 'Июль 2023', rating: '4.7' },
-  { src: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1948&q=80', title: 'Закат в горах', date: 'Сентябрь 2023', rating: '4.9' },
-  { src: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1974&q=80', title: 'Лесной ручей', date: 'Июнь 2023', rating: '4.8' },
-  { src: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=2070&q=80', title: 'Скалы у моря', date: 'Июль 2023', rating: '5.0' },
+  { src: 'static/img/gallery-hiking.jpg', title: 'Поход в Крымские горы', date: 'Май 2023', rating: '4.9' },
+  { src: 'static/img/gallery-fishing.jpg', title: 'Рыбалка на озере', date: 'Июнь 2023', rating: '4.8' },
+  { src: 'static/img/gallery-climbing.jpg', title: 'Скалолазание в Крыму', date: 'Июль 2023', rating: '5.0' },
+  { src: 'static/img/gallery-skiing.jpg', title: 'Горные лыжи на Эльбрусе', date: 'Январь 2023', rating: '4.9' },
+  { src: 'static/img/gallery-mountains.jpg', title: 'Горы Крыма', date: 'Август 2023', rating: '5.0' },
+  { src: 'static/img/gallery-lake.jpg', title: 'Озеро в Крыму', date: 'Сентябрь 2023', rating: '4.9' },
+  { src: 'static/img/gallery-forest.jpg', title: 'Лесной поход', date: 'Октябрь 2023', rating: '4.8' },
+  { src: 'static/img/gallery-sea.jpg', title: 'Морской берег', date: 'Июль 2023', rating: '4.7' },
+  { src: 'static/img/gallery-sunset.jpg', title: 'Закат в горах', date: 'Сентябрь 2023', rating: '4.9' },
+  { src: 'static/img/gallery-stream.jpg', title: 'Лесной ручей', date: 'Июнь 2023', rating: '4.8' },
+  { src: 'static/img/gallery-rocks.jpg', title: 'Скалы у моря', date: 'Июль 2023', rating: '5.0' },
 ];
 
 function openModal(src, title, date, rating) {
@@ -100,9 +100,9 @@ document.getElementById('loadMoreMedia').classList.add('hidden');
 
 // Фильтр туров
 const trips = [
-  { category: 'hiking', title: 'Походы по Крыму', description: 'Живописные маршруты с ночёвками, водопадами и рассветами в горах. Подходит для новичков и опытных.', image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2070&q=80', price: 'Цена по запросу' },
-  { category: 'climbing', title: 'Тур по скалолазанию', description: 'Тренировки и восхождения с опытными инструкторами. Оборудование предоставляется. Безопасность — приоритет.', image: 'https://images.unsplash.com/photo-1511994298241-608e28f14fde?auto=format&fit=crop&w=2070&q=80' },
-  { category: 'skiing', title: 'Горнолыжные курорты России', description: 'Шерегеш, Эльбрус, Красная поляна. Катание, проживание и кайф от снежных склонов!', image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=2076&q=80' },
+  { category: 'hiking', title: 'Походы по Крыму', description: 'Живописные маршруты с ночёвками, водопадами и рассветами в горах. Подходит для новичков и опытных.', image: 'static/img/gallery-mountains.jpg', price: 'Цена по запросу' },
+  { category: 'climbing', title: 'Тур по скалолазанию', description: 'Тренировки и восхождения с опытными инструкторами. Оборудование предоставляется. Безопасность — приоритет.', image: 'static/img/gallery-climbing.jpg' },
+  { category: 'skiing', title: 'Горнолыжные курорты России', description: 'Шерегеш, Эльбрус, Красная поляна. Катание, проживание и кайф от снежных склонов!', image: 'static/img/gallery-skiing.jpg' },
 ];
 
 function loadTrips(filter) {
